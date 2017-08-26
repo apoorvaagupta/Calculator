@@ -211,18 +211,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String str = answer.getText().toString();
                 String infixString = "";
-                boolean flag = false, decimal;
+                boolean flag = false, decimal= false;
                 char count = 'a';
                 HashMap<Character, Float> map  = new HashMap<>();
-                float temp = 0;
+                float temp = 0, mul = 1;
                 for(int i = 0;i<str.length();i++){
                     char ch = str.charAt(i);
                     Log.d(TAG,"hello " + ch) ;
-                    if(ch>='0' && ch<='9'){
+                    if(ch == '.'){
+                        decimal = true;
+                        mul/=10;
+                    }
+                    else if(ch>='0' && ch<='9'){
                         Log.d(TAG,"reached " + temp) ;
 
                         flag = true;
-                        temp = temp*10 + (float) ch - '0';
+                        if(decimal == true) {
+                            temp += ((float) ch - '0') * mul;
+                            mul/=10;
+                        }else
+                            temp = temp*10 + (float) ch - '0';
                         Log.d(TAG,"after change " + temp) ;
 
                     } else{
@@ -232,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
                             count++;
                             temp = 0;
                             flag = false;
+                            decimal = false;
+                            mul = 1;
                             Log.d(TAG,"heyyya " + count + " " + temp) ;
                         }
                         infixString+=ch;
