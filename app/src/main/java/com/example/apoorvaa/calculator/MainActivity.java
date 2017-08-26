@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String s = answer.getText().toString();
+                if(s.length()>0)
                 answer.setText(s.substring(0,s.length()-1));
             }
         });
@@ -216,9 +217,14 @@ public class MainActivity extends AppCompatActivity {
                 float temp = 0;
                 for(int i = 0;i<str.length();i++){
                     char ch = str.charAt(i);
+                    Log.d(TAG,"hello " + ch) ;
                     if(ch>='0' && ch<='9'){
+                        Log.d(TAG,"reached " + temp) ;
+
                         flag = true;
-                        temp = temp*10 + (int) ch;
+                        temp = temp*10 + (float) ch - '0';
+                        Log.d(TAG,"after change " + temp) ;
+
                     } else{
                         if(flag == true){
                             map.put(count, temp);
@@ -226,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
                             count++;
                             temp = 0;
                             flag = false;
+                            Log.d(TAG,"heyyya " + count + " " + temp) ;
                         }
                         infixString+=ch;
                     }
