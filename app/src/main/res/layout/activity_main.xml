@@ -33,7 +33,9 @@
             android:text="C"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#222"
+            android:backgroundTint="#EEE"
             android:id="@+id/clear"/>
         <Button
             android:layout_width="0dp"
@@ -41,23 +43,29 @@
             android:text="/"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/divide"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="*"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/multiply"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="x"
+            android:text="&lt;"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/bkspc"/>
 
     </LinearLayout>
@@ -74,8 +82,10 @@
             android:layout_height="match_parent"
             android:text="7"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/seven"/>
         <Button
             android:layout_width="0dp"
@@ -83,7 +93,9 @@
             android:text="8"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
+            android:layout_margin="1dp"
             android:id="@+id/eight"/>
         <Button
             android:layout_width="0dp"
@@ -91,15 +103,19 @@
             android:text="9"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
+            android:layout_margin="1dp"
             android:id="@+id/nine"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="-"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/minus"/>
 
     </LinearLayout>
@@ -117,7 +133,9 @@
             android:text="4"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/four"/>
         <Button
             android:layout_width="0dp"
@@ -125,7 +143,9 @@
             android:text="5"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/five"/>
         <Button
             android:layout_width="0dp"
@@ -133,15 +153,19 @@
             android:text="6"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
+            android:layout_margin="1dp"
             android:id="@+id/six"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="+"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/plus"/>
 
     </LinearLayout>
@@ -159,32 +183,41 @@
             android:text="1"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
+            android:layout_margin="1dp"
             android:id="@+id/one"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="2"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
             android:id="@+id/two"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="3"
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:id="@+id/three"/>
+            android:layout_margin="1dp"
+            android:id="@+id/three"
+            />
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="."
             android:textSize="20dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:id="@+id/decimal"/>
+            android:layout_margin="1dp"
+            android:id="@+id/decimal" />
 
     </LinearLayout>
     <LinearLayout
@@ -201,7 +234,9 @@
             android:text="0"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/zero"/>
         <Button
             android:layout_width="0dp"
@@ -209,7 +244,9 @@
             android:text="("
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/ob"/>
         <Button
             android:layout_width="0dp"
@@ -217,7 +254,9 @@
             android:text=")"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:layout_margin="1dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
             android:id="@+id/cb"/>
         <Button
             android:layout_width="0dp"
@@ -225,7 +264,9 @@
             android:text="="
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_margin="0dp"
+            android:background="#999"
+            android:backgroundTint="#EEE"
+            android:layout_margin="1dp"
             android:id="@+id/equals"/>
 
     </LinearLayout>

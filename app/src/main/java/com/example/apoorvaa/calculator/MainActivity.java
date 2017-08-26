@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         answer = (TextView) findViewById(R.id.answer);
 
 
-        clear.setOnClickListener(new View.OnClickListener(){
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 answer.setText("");
@@ -197,12 +197,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bkspc.setOnClickListener(new View.OnClickListener(){
+        bkspc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String s = answer.getText().toString();
-                if(s.length()>0)
-                answer.setText(s.substring(0,s.length()-1));
+                if (s.length() > 0)
+                    answer.setText(s.substring(0, s.length() - 1));
             }
         });
 
@@ -211,51 +211,51 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String str = answer.getText().toString();
                 String infixString = "";
-                boolean flag = false, decimal= false;
+                boolean flag = false, decimal = false;
                 char count = 'a';
-                HashMap<Character, Float> map  = new HashMap<>();
+                HashMap<Character, Float> map = new HashMap<>();
                 float temp = 0, mul = 1;
-                for(int i = 0;i<str.length();i++){
+                for (int i = 0; i < str.length(); i++) {
                     char ch = str.charAt(i);
-                    Log.d(TAG,"hello " + ch) ;
-                    if(ch == '.'){
+                    Log.d(TAG, "hello " + ch);
+                    if (ch == '.') {
                         decimal = true;
-                        mul/=10;
-                    }
-                    else if(ch>='0' && ch<='9'){
-                        Log.d(TAG,"reached " + temp) ;
+                        mul /= 10;
+                    } else if (ch >= '0' && ch <= '9') {
+                        Log.d(TAG, "reached " + temp);
 
                         flag = true;
-                        if(decimal == true) {
-                            temp += ((float) ch - '0') * mul;
-                            mul/=10;
-                        }else
-                            temp = temp*10 + (float) ch - '0';
-                        Log.d(TAG,"after change " + temp) ;
+                        if (decimal == true) {
+                            temp += ((int) ch - '0') * mul;
+                            mul /= 10;
+                        } else
+                            temp = temp * 10 + (int) ch - '0';
+                        Log.d(TAG, "after change " + temp);
 
-                    } else{
-                        if(flag == true){
+                    } else {
+                        if (flag == true) {
                             map.put(count, temp);
-                            infixString+=count;
+                            infixString += count;
                             count++;
                             temp = 0;
                             flag = false;
                             decimal = false;
                             mul = 1;
-                            Log.d(TAG,"heyyya " + count + " " + temp) ;
+                            Log.d(TAG, "heyyya " + count + " " + temp);
                         }
-                        infixString+=ch;
+                        infixString += ch;
                     }
                 }
-                if(flag == true){
+                if (flag == true) {
                     map.put(count, temp);
-                    infixString+=count;
+                    infixString += count;
                     count++;
                     temp = 0;
                     flag = false;
                 }
-
-                String post = convertToPostfix(infixString);
+                Log.d(TAG, infixString + " infix");
+                String post = convertToPostfix( infixString );
+                Log.d(TAG, post + " post");
                 float ans = eval(post, map);
                 answer.setText(String.valueOf(ans));
 
@@ -265,121 +265,96 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean isOperator(char c)
-    {
-        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^'
-                || c == '(' || c == ')';
-    }
-
-    private boolean isLowerPrecedence(char op1, char op2)
-    {
-        switch (op1)
-        {
-            case '+':
-            case '-':
-                return !(op2 == '+' || op2 == '-');
-
-            case '*':
-            case '/':
-                return op2 == '^' || op2 == '(';
-
-            case '^':
-                return op2 == '(';
-
-            case '(':
-                return true;
-
-            default:
-                return false;
-        }
-    }
-
-    private String convertToPostfix(String infix)
-    {
-        Stack<Character> stack = new Stack<Character>();
-        StringBuffer postfix = new StringBuffer(infix.length());
-        char c;
-
-        for (int i = 0; i < infix.length(); i++)
-        {
-            c = infix.charAt(i);
-
-            if (!isOperator(c))
-            {
-                postfix.append(c);
-            }
-
-            else
-            {
-                if (c == ')')
-                {
-
-                    while (!stack.isEmpty() && stack.peek() != '(')
-                    {
-                        postfix.append(stack.pop());
-                    }
-                    if (!stack.isEmpty())
-                    {
-                        stack.pop();
-                    }
-                }
-
-                else
-                {
-                    if (!stack.isEmpty() && !isLowerPrecedence(c, stack.peek()))
-                    {
-                        stack.push(c);
-                    }
-                    else
-                    {
-                        while (!stack.isEmpty() && isLowerPrecedence(c, stack.peek()))
-                        {
-                            Character pop = stack.pop();
-                            if (c != '(')
-                            {
-                                postfix.append(pop);
-                            } else {
-                                c = pop;
-                            }
-                        }
-                        stack.push(c);
-                    }
-
-                }
-            }
-        }
-        while (!stack.isEmpty()) {
-            postfix.append(stack.pop());
-        }
-        return postfix.toString();
-    }
-
-
     private float eval(String str, HashMap<Character, Float> map) {
 
         Stack<Float> stack = new Stack<>();
-        for(int i = 0;i <str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if(!isOperator(ch)){
+            if (!isOperator(ch)) {
                 Log.d(TAG, ch + " " + map.get(ch));
                 stack.push(map.get(ch));
-            }else{
+            } else {
                 float b = stack.pop();
                 float a = stack.pop();
-                if(ch == '+')
-                    stack.push(a+b);
-                else if(ch == '-')
-                    stack.push(a-b);
-                else if(ch == '*')
-                    stack.push(a*b);
+                if (ch == '+')
+                    stack.push(a + b);
+                else if (ch == '-')
+                    stack.push(a - b);
+                else if (ch == '*')
+                    stack.push(a * b);
                 else
-                    stack.push(a/b);
+                    stack.push(a / b);
             }
         }
 
         float a = stack.pop();
         Log.d(TAG, a + " ");
         return a;
+    }
+
+    private static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '(' || c == ')';
+    }
+
+    private static int getPrecedence(char ch) {
+        switch (ch) {
+            case '+':
+            case '-':
+                return 1;
+
+            case '*':
+            case '/':
+                return 2;
+
+            case '^':
+                return 3;
+        }
+        return -1;
+    }
+
+    // A utility function to check if the given character is operand
+    private static boolean isOperand(char ch) {
+        return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+    }
+
+    public static String convertToPostfix(String infix) {
+        Stack<Character> stack = new Stack<Character>();
+        StringBuffer postfix = new StringBuffer(infix.length());
+        char c;
+
+        for (int i = 0; i < infix.length(); i++) {
+            c = infix.charAt(i);
+
+            if (isOperand(c)) {
+                postfix.append(c);
+            } else if (c == '(') {
+                stack.push(c);
+            }
+            // If the scanned character is an ‘)’, pop and output from the stack
+            // until an ‘(‘ is encountered.
+            else if (c == ')') {
+
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    postfix.append(stack.pop());
+                }
+                if (!stack.isEmpty() && stack.peek() != '(')
+                    return null;
+                else if(!stack.isEmpty())
+                    stack.pop();
+            }
+            else if (isOperator(c)) // operator encountered
+            {
+                if (!stack.isEmpty() && getPrecedence(c) <= getPrecedence(stack.peek())) {
+                    postfix.append(stack.pop());
+                }
+                stack.push(c);
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            postfix.append(stack.pop());
+        }
+        return postfix.toString();
     }
 
 }
